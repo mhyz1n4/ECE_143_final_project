@@ -8,3 +8,5 @@ We are using the amazon review dataset provided by CSE course. The dataset can b
 ```baseline.py``` this file contains all the functions needed for analysing the dataset.
 
 ```Visualizations.ipynb``` this jupyter file contains how to use the function in ```baseline.py``` and visualization of the data analysis, which is in the presentation.
+
+```software``` this folder is an example of our project.
