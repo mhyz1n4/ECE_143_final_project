@@ -14,9 +14,7 @@ def process_year_data(all_data):
     '''
     Process data of different year and return the frequency of bigrams
     '''
-    assert isinstance(all_data,str)
-    for content in all_data:
-        assert isinstance(content,str)
+    assert isinstance(all_data,pd.DataFrame))
     # initialize NLTK and spacy
     bigramCount = defaultdict(int)
     punctuation = set(string.punctuation)
