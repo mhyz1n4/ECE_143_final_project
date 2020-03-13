@@ -14,14 +14,24 @@ We are using the amazon review dataset provided by CSE course. The dataset can b
 ## Third Party Modules
 json
 
-numpy as np
+numpy
+
 collections (defaultdict, Counter)
+
 string
+
 sklearn (linear_model)
+
 sys
+
 nltk
+
 random
+
 nltk.corpus (stopwords)
+
 matplotlib
+
 pandas
+
 spacy
