@@ -38,3 +38,5 @@ matplotlib
 pandas
 
 spacy
+
+wordcloud
