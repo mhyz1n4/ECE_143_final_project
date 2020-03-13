@@ -67,6 +67,14 @@ def only_adj_and_noun(all_data):
     return uniCount, bigramCount, review_text
 
 def feature(text, bigrams, bigramId):
+    '''
+    get bag of words features from bigrams dictionary
+    '''
+    
+    assert isinstance(text, str)
+    assert isinstance(bigrams, list)
+    assert isinstance(bigramId, dict)
+    
     #create bag of words vector features
     feat = [0]*len(bigrams)
     words = text.split()
