@@ -31,6 +31,12 @@ def read_data(f_name):
     return all_data
 
 def only_adj_and_noun(all_data):
+    '''
+    extract all the nouns and adjectives bigrams from review text.
+    '''
+    
+    assert isinstance(all_data, list)
+    
     # remove data that has missing features
     for i in all_data:
         if 'reviewText' not in i.keys() or 'overall' not in i.keys() or not i['reviewText'] or not i['overall']:
@@ -88,6 +94,12 @@ def feature(text, bigrams, bigramId):
     return feat
 
 def bigram_to_feature(bi_count):
+    '''
+    turn bigram counts to keys and (bigram, count) pairs
+    '''
+    
+    assert isinstance(bi_count, dict)
+    
     #get (numbers of bigram, bigram) pairs
     countsBigram = [(bi_count[d], d) for d in bi_count.keys()]
     countsBigram.sort()
@@ -111,6 +123,13 @@ def bigram_to_feature(bi_count):
 #    return feat
 
 def data_by_rating(all_data, rating):
+    '''
+    get data that has certain rating
+    '''
+    
+    assert isinstance(all_data, list)
+    assert isinstance(rating, float)
+    
     # get data that has certain rating
     ratings_data = []
     for d in all_data:
@@ -128,6 +147,13 @@ def data_by_year(all_data):
     return year_data
 
 def regression(x,y):
+    '''
+    train reression model
+    '''
+    
+    assert isinstance(x, list)
+    assert isinstance(y, list)
+    
     reg = 1.0
     clf_bi = linear_model.Ridge(reg, fit_intercept=False)
     clf_bi.fit(x, y)
