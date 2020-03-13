@@ -17,7 +17,9 @@ def read_data(f_name):
     '''
     read all data from source files and return them as a list.
     '''
+    
     assert isinstance(f_name,str)
+    
     all_data = []
     assert os.path.exists(f_name)
     print(f_name)
@@ -138,7 +140,11 @@ def data_by_rating(all_data, rating):
     return ratings_data
 
 def data_by_year(all_data):
-    # create dataframe that contains ["reviewTime",'overall', 'reviewText'] columns
+    '''
+    create dataframe that contains ["reviewTime",'overall', 'reviewText'] columns
+    '''
+    assert isinstance(all_data, list)
+    
     tmp = pd.DataFrame(all_data)
     tmp["reviewTime"] = tmp["reviewTime"].str[-4:]
     a = pd.to_datetime(tmp["reviewTime"])
@@ -162,6 +168,14 @@ def regression(x,y):
     return theta_bi, pred_bi
 
 def sort_bigrams(theta_bi,bigrams,n):
+    '''
+    sort bigrams based on the corresponding theta_bi
+    '''
+    
+    assert isinstance(theta_bi, list)
+    assert isinstance(n, int)
+    assert isinstance(bigrams, list)
+    
     max_index = np.argsort(theta_bi)[-n:][::-1]
     max_index = max_index[1:]
     print(max_index)
@@ -173,6 +187,12 @@ def sort_bigrams(theta_bi,bigrams,n):
     return tmp_pair
 
 def process_year_data(all_data):
+    '''
+    all the nouns and adjectives bigrams from dataframe
+    '''
+    
+    assert isinstance(all_data, pd.DataFrame))
+    
     # initialize NLTK and spacy
     bigramCount = defaultdict(int)
     punctuation = set(string.punctuation)
