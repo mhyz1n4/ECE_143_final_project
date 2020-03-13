@@ -11,6 +11,9 @@ We are using the amazon review dataset provided by CSE course. The dataset can b
 
 ```software``` this folder is an example of our project.
 
+## Usage
+The use of '''baseline.py''' is visualized in the Jupyter notebooks file '''Visualizations.ipynb'''. The baseline module is first loaded and unpacked. The 'stopwords' corpus is downloaded from the natural language toolkit (nltk). Amazon data is loaded in as a .json file and stored in a list. Using the 'only_adj_and_noun' function, reviews are removed if there is no rating or review text, reviews are reduced to only adjectives and nouns, and a list of unigrams, bigrams, and resulting review text is returned. 'bigram_to_feature' sorts bigrams by frequency and returns the 1000 most frequent bigrams in reviews. 
+
 ## Third Party Modules
 json
 
