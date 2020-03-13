@@ -12,7 +12,8 @@ We are using the amazon review dataset provided by CSE course. The dataset can b
 ```software``` this folder is an example of our project.
 
 ## Third Party Modules
-jso
+json
+
 numpy as np
 collections (defaultdict, Counter)
 string
