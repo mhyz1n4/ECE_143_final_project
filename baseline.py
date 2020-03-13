@@ -31,8 +31,8 @@ def only_adj_and_noun(all_data):
     for i in all_data:
         if 'reviewText' not in i.keys() or 'overall' not in i.keys() or not i['reviewText'] or not i['overall']:
             all_data.remove(i)
-    # obtain a subset of data to reduce computation time
-    all_data = random.choices(all_data, k=60000)
+#    # obtain a subset of data to reduce computation time
+#    all_data = random.choices(all_data, k=60000)
 
     # set up NLTK and spacy
     bigramCount = defaultdict(int)
@@ -62,17 +62,7 @@ def only_adj_and_noun(all_data):
             uniCount[r[0]] += 1
     return uniCount, bigramCount, review_text
 
-def bigram_to_feature(text, bi_count):
-    #get (numbers of bigram, bigram) pairs
-    countsBigram = [(bi_count[d], d) for d in bi_count.keys()]
-    countsBigram.sort()
-    countsBigram.reverse()
-
-    #get the most frequent 1000 bigrams
-    bigrams = [c[1] for c in countsBigram[:1000]]
-    bigramId = dict(zip(bigrams, range(len(bigrams))))
-
-    #create bag of words vector features
+def feature(text, bigrams, bigramId):
     feat = [0]*len(bigrams)
     words = text.split()
     for i in range(len(words)-1):
@@ -83,6 +73,29 @@ def bigram_to_feature(text, bi_count):
             continue
     feat.append(1) #offset
     return feat
+
+def bigram_to_feature(bi_count):
+    #get (numbers of bigram, bigram) pairs
+    countsBigram = [(bi_count[d], d) for d in bi_count.keys()]
+    countsBigram.sort()
+    countsBigram.reverse()
+
+    #get the most frequent 1000 bigrams
+    bigrams = [c[1] for c in countsBigram[:1000]]
+    bigramId = dict(zip(bigrams, range(len(bigrams))))
+    return bigrams,bigramId
+
+#    #create bag of words vector features
+#    feat = [0]*len(bigrams)
+#    words = text.split()
+#    for i in range(len(words)-1):
+#        bigram = words[i] + " " + words[i+1]
+#        try:
+#            feat[bigramId[bigram]] += 1
+#        except KeyError:
+#            continue
+#    feat.append(1) #offset
+#    return feat
 
 def data_by_rating(all_data, rating):
     # get data that has certain rating
@@ -100,6 +113,25 @@ def data_by_year(all_data):
     tmp["reviewTime"] = a.dt.strftime('%Y')
     year_data = tmp[["reviewTime",'overall', 'reviewText']]
     return year_data
+
+def regression(x,y):
+    reg = 1.0
+    clf_bi = linear_model.Ridge(reg, fit_intercept=False)
+    clf_bi.fit(x, y)
+    theta_bi = clf_bi.coef_
+    pred_bi = clf_bi.predict(X_2)
+    return theta_bi, pred_bi
+
+def sort_bigrams(theta_bi,bigrams,n):
+    max_index = np.argsort(theta_bi)[-n:][::-1]
+    max_index = max_index[1:]
+    print(max_index)
+    print(len(theta_bi[max_index]))
+    #print(np.array(bigrams)[max_index - 1])
+    tmp_bigram = np.array(bigrams)[max_index]
+    print(tmp_bigram)
+    tmp_pair = {bigrams[i]: theta_bi[i] for i in max_index}
+    return tmp_pair
 
 def process_year_data(all_data):
     # initialize NLTK and spacy
