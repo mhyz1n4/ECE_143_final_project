@@ -191,7 +191,7 @@ def process_year_data(all_data):
     all the nouns and adjectives bigrams from dataframe
     '''
     
-    assert isinstance(all_data, pd.DataFrame))
+    assert isinstance(all_data, pd.DataFrame)
     
     # initialize NLTK and spacy
     bigramCount = defaultdict(int)
