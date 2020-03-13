@@ -17,7 +17,7 @@ def data_by_rating(all_data, rating):
     assert isinstance(all_data,list)
     for content in all_data:
         assert isinstance(content,str)
-    assert isinstance(rating,int)
+    assert isinstance(rating,float)
     # get data that has certain rating
     ratings_data = []
     for d in all_data:
