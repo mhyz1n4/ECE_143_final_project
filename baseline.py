@@ -14,6 +14,10 @@ import pandas as pd
 import spacy
 
 def read_data(f_name):
+    '''
+    read all data from source files and return them as a list.
+    '''
+    assert isinstance(f_name,str)
     all_data = []
     assert os.path.exists(f_name)
     print(f_name)
