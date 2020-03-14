@@ -185,7 +185,7 @@ def sort_bigrams(theta_bi,bigrams,n):
     tmp_bigram = np.array(bigrams)[max_index]
     print(tmp_bigram)
     tmp_pair = {bigrams[i]: theta_bi[i] for i in max_index}
-    return tmp_pair
+    return tmp_pair, max_index
 
 def process_year_data(all_data):
     '''
