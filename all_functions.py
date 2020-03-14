@@ -30,6 +30,7 @@ def read_data(f_name):
             data = json.loads(line)
             all_data.append(data)
             line = f.readline()
+    all_data = all_data[:60000]
     return all_data
 
 def only_adj_and_noun(all_data):
@@ -164,7 +165,7 @@ def regression(x,y):
     clf_bi = linear_model.Ridge(reg, fit_intercept=False)
     clf_bi.fit(x, y)
     theta_bi = clf_bi.coef_
-    pred_bi = clf_bi.predict(X_2)
+    pred_bi = clf_bi.predict(x)
     return theta_bi, pred_bi
 
 def sort_bigrams(theta_bi,bigrams,n):
