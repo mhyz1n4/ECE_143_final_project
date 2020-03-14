@@ -5,11 +5,11 @@ An repository for amazon review dataset analysis
 We are using the amazon review dataset provided by CSE course. The dataset can be downloaded by following this link: https://cseweb.ucsd.edu/~jmcauley/datasets.html. For this project, we only analysed Software, Electronics, Prime Pantry and Sports & Outdoors categories. 
 
 ## File Structure
-```baseline.py``` this file contains all the functions needed for analysing the dataset.
+```demonstration/all_function.py``` this file contains all the functions needed for analysing the dataset.
 
-```Visualizations.ipynb``` this jupyter file contains how to use the function in ```baseline.py``` and visualization of the data analysis, which is in the presentation.
+```demonstration/demonstration.ipynb``` this jupyter file contains how to use the function in ```all_function.py``` and visualization of the data analysis we did for the project. Notice that the results are different from PPT because there's some randomness in our method. The jupyter file is only for workflow demonstration purposes. To get the results in our PPT, please refer to the jupyter notebook file in the example folders. 
 
-```software``` this folder is an example of our project.
+```software``` these folder is an example of our project.
 
 ## Usage
 The use of '''baseline.py''' is visualized in the Jupyter notebooks file '''Visualizations.ipynb'''. The all_graph_in_presentation folder contains all graphs we use in presentation. 
