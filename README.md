@@ -9,7 +9,7 @@ We are using the amazon review dataset provided by CSE course. The dataset can b
 
 ```demonstration/demonstration.ipynb``` this jupyter file contains how to use the function in ```all_function.py``` and visualization of the data analysis we did for the project. Notice that the results are different from PPT because there's some randomness in our method. The jupyter file is only for workflow demonstration purposes. To get the results in our PPT, please refer to the jupyter notebook file in the example folders. 
 
-```software``` these folder is an example of our project.
+```software, sports_and_outdoors, electronics``` these folder are examples of our project analysis.
 
 ## Usage
 The use of '''baseline.py''' is visualized in the Jupyter notebooks file '''Visualizations.ipynb'''. The all_graph_in_presentation folder contains all graphs we use in presentation. 
